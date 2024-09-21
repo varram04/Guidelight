@@ -31,9 +31,9 @@ internal fun AppNavigation(navController: NavHostController = rememberNavControl
             }
         }
         composable(RouteName.DASHBOARD) {
-            DashboardScreen {
-                navController.navigate(RouteName.NOTIFICATION)
-            }
+            DashboardScreen(
+                onLogoutClick = { navController.navigate(RouteName.LOGIN) },
+                onNotificationClick = { navController.navigate(RouteName.NOTIFICATION) })
         }
         composable(RouteName.NOTIFICATION) {
             NotificationScreen()
