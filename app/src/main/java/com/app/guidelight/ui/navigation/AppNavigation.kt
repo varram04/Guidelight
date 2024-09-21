@@ -7,20 +7,28 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.app.guidelight.DashboardScreen
+import com.app.guidelight.RegisterForm
 import com.app.guidelight.ui.route.RouteName
+import com.example.logincomposeapp.LoginScreen
 import com.example.notifications.NotificationScreen
 
 @Composable
 internal fun AppNavigation(navController: NavHostController = rememberNavController()) {
-    NavHost(navController = navController, startDestination = RouteName.DASHBOARD) {
+    NavHost(navController = navController, startDestination = RouteName.LOGIN) {
         composable(RouteName.LOGIN) {
-
+            LoginScreen{
+                navController.popBackStack()
+            }
         }
         composable(RouteName.REGISTER) {
-
+            RegisterForm{
+                navController.navigate(RouteName.REGISTER)
+            }
         }
         composable(RouteName.DASHBOARD) {
-            DashboardScreen()
+            DashboardScreen{
+                navController.navigate(RouteName.NOTIFICATION)
+            }
         }
         composable(RouteName.NOTIFICATION) {
             NotificationScreen()

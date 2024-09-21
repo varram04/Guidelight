@@ -13,16 +13,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.*
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.painterResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun DashboardScreen() {
+internal fun DashboardScreen(onNotificationClick:()-> Unit) {
 
     val exams by remember {
         mutableStateOf(
@@ -46,7 +49,9 @@ internal fun DashboardScreen() {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { TopAppBar(title = { Text(text = "Dashboard") }) }) { paddingValues ->
+        topBar = { TopAppBar(title = { Text(text = "Dashboard") }, actions = {
+            Icon(Icons.Default.Notifications, contentDescription = null,modifier = Modifier.clickable { onNotificationClick() })
+        } ) }) { paddingValues ->
         ExamItems(modifier = Modifier.padding(paddingValues), examsByDate = exams)
     }
 }
@@ -88,8 +93,8 @@ fun CourseItems(modifier: Modifier, courses:Map<String,Map<String,List<Exam>>>){
 @Composable
 fun ExamItems(modifier: Modifier, examsByDate: Map<String, List<Exam>>) {
     LazyColumn(
-        modifier = modifier.
-        fillMaxSize()
+        modifier = modifier
+            .fillMaxSize()
             .padding(16.dp)
     ) {
         examsByDate.forEach { (date, exams) ->

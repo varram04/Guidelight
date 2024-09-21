@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RegisterForm() {
+fun RegisterForm(onSubmitClick: ()-> Unit) {
     var name by remember { mutableStateOf("") }
     var address by remember { mutableStateOf("") }
     var selectedValidProof by remember { mutableStateOf("") }
@@ -96,7 +96,7 @@ fun RegisterForm() {
             modifier = Modifier.fillMaxWidth()
         )
         Button(
-            onClick = { /* Handle form submission */ },
+            onClick = { onSubmitClick() },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Submit")
