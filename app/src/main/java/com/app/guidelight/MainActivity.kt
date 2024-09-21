@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.app.guidelight.data.NotificationItem
+import com.app.guidelight.ui.navigation.AppNavigation
 import com.app.guidelight.ui.theme.GuidelightTheme
 import com.example.notifications.NotificationScreen
 
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GuidelightTheme {
-                NotificationScreen(notifications = sampleNotifications )
+               AppNavigation()
             }
         }
     }
