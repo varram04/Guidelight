@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoginScreen(onRegisterClick: () -> Unit) {
+fun LoginScreen(onLoginClick: ()-> Unit, onRegisterClick: () -> Unit) {
     var username by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
     var loginMessage by remember { mutableStateOf("") }
@@ -57,6 +57,7 @@ fun LoginScreen(onRegisterClick: () -> Unit) {
                             "Please fill in all fields"
                         }
                         username.text == "admin" && password.text == "password" -> {
+                            onLoginClick()
                             "Login successful"
                         }
                         else -> {
