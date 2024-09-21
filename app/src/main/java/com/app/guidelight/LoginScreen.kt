@@ -79,3 +79,9 @@ fun LoginScreen(onLoginClick: ()-> Unit, onRegisterClick: () -> Unit) {
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewLoginScreen() {
+    LoginScreen()
+}
