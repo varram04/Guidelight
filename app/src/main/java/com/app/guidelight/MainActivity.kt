@@ -11,16 +11,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.app.guidelight.data.NotificationItem
+import com.app.guidelight.ui.navigation.AppNavigation
 import com.app.guidelight.ui.theme.GuidelightTheme
-import com.example.logincomposeapp.LoginScreen
+import com.example.notifications.NotificationScreen
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             GuidelightTheme {
-                LoginScreen()
+               AppNavigation()
             }
         }
     }
