@@ -25,7 +25,7 @@ import androidx.compose.ui.res.painterResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun DashboardScreen(onNotificationClick:()-> Unit) {
+internal fun DashboardScreen(onNotificationClick: () -> Unit,onLogoutClick: () -> Unit) {
 
     val exams by remember {
         mutableStateOf(
@@ -49,9 +49,18 @@ internal fun DashboardScreen(onNotificationClick:()-> Unit) {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { TopAppBar(title = { Text(text = "Dashboard") }, actions = {
-            Icon(Icons.Default.Notifications, contentDescription = null,modifier = Modifier.clickable { onNotificationClick() })
-        } ) }) { paddingValues ->
+        topBar = {
+            TopAppBar(title = { Text(text = "Dashboard") }, actions = {
+                Icon(
+                    Icons.Default.Notifications,
+                    contentDescription = null,
+                    modifier = Modifier.clickable { onNotificationClick() })
+                TextButton(onClick = { onLogoutClick() }){
+                    Text(text = "Logout")
+                }
+
+            })
+        }) { paddingValues ->
         ExamItems(modifier = Modifier.padding(paddingValues), examsByDate = exams)
     }
 }
@@ -64,7 +73,7 @@ data class Exam(
 )
 
 @Composable
-fun CourseItems(modifier: Modifier, courses:Map<String,Map<String,List<Exam>>>){
+fun CourseItems(modifier: Modifier, courses: Map<String, Map<String, List<Exam>>>) {
     var expanded by remember { mutableStateOf(false) }
     LazyColumn(
         modifier = modifier
@@ -74,14 +83,14 @@ fun CourseItems(modifier: Modifier, courses:Map<String,Map<String,List<Exam>>>){
         courses.forEach { (name, exams) ->
             item {
                 Text(
-                text = name,
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { expanded = !expanded }
-                    .padding(vertical = 8.dp)
-            )
+                    text = name,
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { expanded = !expanded }
+                        .padding(vertical = 8.dp)
+                )
                 if (expanded) {
                     ExamItems(modifier = Modifier, examsByDate = exams)
                 }
@@ -115,7 +124,6 @@ fun ExamItems(modifier: Modifier, examsByDate: Map<String, List<Exam>>) {
         }
     }
 }
-
 
 
 @Composable
