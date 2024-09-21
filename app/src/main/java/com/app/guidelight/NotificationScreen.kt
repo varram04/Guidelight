@@ -10,7 +10,14 @@ import com.app.guidelight.data.NotificationItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NotificationScreen(notifications: List<NotificationItem>) {
+fun NotificationScreen() {
+
+    val notifications = listOf(
+        NotificationItem("Reminder 1", "You have a meeting at 10 AM", "10:00 AM"),
+        NotificationItem("Reminder 2", "Call with the client", "2:00 PM"),
+        NotificationItem("Reminder 3", "Finish the report", "5:00 PM")
+    )
+
     Scaffold(topBar = { TopAppBar(title = { Text("Notifications") }) }) { padding ->
         LazyColumn(modifier = Modifier.padding(padding).fillMaxSize()) {
             items(notifications.size) { index ->
