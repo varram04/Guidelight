@@ -16,16 +16,22 @@ import com.example.notifications.NotificationScreen
 internal fun AppNavigation(navController: NavHostController = rememberNavController()) {
     NavHost(navController = navController, startDestination = RouteName.LOGIN) {
         composable(RouteName.LOGIN) {
-            LoginScreen(onLoginClick = {navController.navigate(RouteName.DASHBOARD)},
-                onRegisterClick = {navController.navigate(RouteName.REGISTER)})
+            LoginScreen(onLoginClick = {
+                navController.navigate(RouteName.DASHBOARD) {
+                    popUpTo(RouteName.LOGIN) {
+                        inclusive = true
+                    }
+                }
+            },
+                onRegisterClick = { navController.navigate(RouteName.REGISTER) })
         }
         composable(RouteName.REGISTER) {
-            RegisterForm{
+            RegisterForm {
                 navController.popBackStack()
             }
         }
         composable(RouteName.DASHBOARD) {
-            DashboardScreen{
+            DashboardScreen {
                 navController.navigate(RouteName.NOTIFICATION)
             }
         }
