@@ -17,15 +17,6 @@ import com.app.guidelight.ui.theme.GuidelightTheme
 import com.example.notifications.NotificationScreen
 
 class MainActivity : ComponentActivity() {
-    val sampleNotifications = listOf(
-        NotificationItem("Exam date announcement", "The reporting time for the registered exam is 9:00 AM", "10:00 AM"),
-        NotificationItem("Confirmation", "you are successfully registered", "2:00 PM"),
-        NotificationItem("Cancellation", "Registration for the exam has been successfully canceled", "5:00 PM"),
-        NotificationItem("Unsuccessful registration", "Your registration has been declined ,Please try again", "6:00 PM"),
-        NotificationItem("Announcement", "volunteers required for x courses", "5:00 PM")
-
-
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

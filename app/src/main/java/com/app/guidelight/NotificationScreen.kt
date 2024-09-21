@@ -13,9 +13,11 @@ import com.app.guidelight.data.NotificationItem
 fun NotificationScreen() {
 
     val notifications = listOf(
-        NotificationItem("Reminder 1", "You have a meeting at 10 AM", "10:00 AM"),
-        NotificationItem("Reminder 2", "Call with the client", "2:00 PM"),
-        NotificationItem("Reminder 3", "Finish the report", "5:00 PM")
+        NotificationItem("Exam date announcement", "The reporting time for the registered exam is 9:00 AM", "10:00 AM"),
+        NotificationItem("Confirmation", "you are successfully registered", "2:00 PM"),
+        NotificationItem("Cancellation", "Registration for the exam has been successfully canceled", "5:00 PM"),
+        NotificationItem("Unsuccessful registration", "Your registration has been declined ,Please try again", "6:00 PM"),
+        NotificationItem("Announcement", "volunteers required for x courses", "5:00 PM")
     )
 
     Scaffold(topBar = { TopAppBar(title = { Text("Notifications") }) }) { padding ->

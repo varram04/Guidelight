@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(onRegisterClick: () -> Unit) {
     var username by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
     var loginMessage by remember { mutableStateOf("") }
@@ -68,16 +68,13 @@ fun LoginScreen() {
             ) {
                 Text("Login")
             }
+            TextButton(onClick = { onRegisterClick() }) {
+                Text(text = "Register")
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(loginMessage)
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewLoginScreen() {
-    LoginScreen()
 }
