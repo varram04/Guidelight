@@ -12,7 +12,7 @@ import com.example.notifications.NotificationScreen
 
 @Composable
 internal fun AppNavigation(navController: NavHostController = rememberNavController()) {
-    NavHost(navController = navController, startDestination = RouteName.LOGIN) {
+    NavHost(navController = navController, startDestination = RouteName.DASHBOARD) {
         composable(RouteName.LOGIN) {
 
         }
